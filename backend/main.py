@@ -16,9 +16,12 @@ from services.converter import convert_to_mp3, check_ffmpeg
 
 load_dotenv()
 
+import tempfile
+
 # Temp directory
-TEMP_DIR = Path(__file__).parent / "temp"
-TEMP_DIR.mkdir(exist_ok=True)
+# Use a dedicated subdirectory in the system temp location to ensure we don't accidentally delete other apps' files
+TEMP_DIR = Path(tempfile.gettempdir()) / "song_downloader_temp"
+TEMP_DIR.mkdir(parents=True, exist_ok=True)
 
 # Supabase (optional)
 supabase = None
