@@ -11,10 +11,10 @@ QUALITY_MAP = {
     "480p": "bestvideo[height<=480]+bestaudio/best[height<=480]",
     "360p": "bestvideo[height<=360]+bestaudio/best[height<=360]",
     # Audio qualities
-    "320kbps": "bestaudio",
-    "256kbps": "bestaudio",
-    "192kbps": "bestaudio",
-    "128kbps": "bestaudio",
+    "320kbps": "bestaudio[abr>=256]/bestaudio/best",
+    "256kbps": "bestaudio[abr>=192]/bestaudio/best",
+    "192kbps": "bestaudio[abr>=128]/bestaudio/best",
+    "128kbps": "bestaudio[abr<=128]/bestaudio/best",
 }
 
 
@@ -22,10 +22,9 @@ async def download_video(video_id: str, output_path: str, media_type: str = "vid
     """Download video or audio using yt-dlp."""
     url = f"https://www.youtube.com/watch?v={video_id}"
     
-    if media_type == "audio":
-        format_selector = "bestaudio[ext=m4a]/bestaudio"
-    else:
-        format_selector = QUALITY_MAP.get(quality, "best")
+    # Use quality map for both video and audio
+    # Default to 'best' if quality not found
+    format_selector = QUALITY_MAP.get(quality, "best")
     
     cmd = [
         "yt-dlp",

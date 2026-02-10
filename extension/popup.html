@@ -1,17 +1,18 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>ClipIt</title>
   <link rel="stylesheet" href="popup.css">
 </head>
+
 <body>
   <div class="container">
     <!-- Header -->
     <header class="header">
       <div class="logo">
-        <span class="logo-icon">🎵</span>
         <span class="logo-text">ClipIt</span>
       </div>
       <div class="quota" id="quota">
@@ -34,7 +35,6 @@
         </div>
       </div>
       <div class="video-error hidden" id="videoError">
-        <span class="error-icon">⚠️</span>
         <p>No YouTube video detected</p>
         <small>Open a YouTube video to download</small>
       </div>
@@ -45,30 +45,17 @@
       <label class="section-label">Format</label>
       <div class="format-toggle">
         <button class="format-btn active" data-format="mp3" id="btnMp3">
-          <span class="format-icon">🎵</span>
           MP3
         </button>
         <button class="format-btn" data-format="mp4" id="btnMp4">
-          <span class="format-icon">🎬</span>
           MP4
         </button>
       </div>
     </section>
-
-    <!-- Quality Selection -->
-    <section class="quality-section hidden" id="qualitySection">
-      <label class="section-label">Quality</label>
-      <div class="quality-dropdown">
-        <select id="qualitySelect" class="quality-select">
-          <!-- Populated by JS -->
-        </select>
-      </div>
-    </section>
-
+    <!-- ... skipping middle parts ... -->
     <!-- Download Button -->
     <section class="download-section hidden" id="downloadSection">
       <button class="download-btn" id="downloadBtn">
-        <span class="btn-icon">⬇</span>
         <span class="btn-text">Download Now</span>
       </button>
     </section>
@@ -83,7 +70,6 @@
 
     <!-- Rate Limit Warning -->
     <section class="limit-warning hidden" id="limitWarning">
-      <span class="warning-icon">⏳</span>
       <p>Daily limit reached</p>
       <small>Resets in <span id="resetTime">24 hours</span></small>
     </section>
@@ -96,4 +82,5 @@
 
   <script src="popup.js" type="module"></script>
 </body>
+
 </html>

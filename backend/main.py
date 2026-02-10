@@ -32,7 +32,7 @@ try:
     if url and key:
         supabase = create_client(url, key)
 except Exception as e:
-    print(f"⚠️ Supabase not configured: {e}")
+    print(f"Supabase not configured: {e}")
 
 
 @asynccontextmanager
@@ -41,18 +41,18 @@ async def lifespan(app: FastAPI):
     has_ytdlp = await check_ytdlp()
     has_ffmpeg = await check_ffmpeg()
     
-    print("\n🎵 ClipIt Backend (FastAPI)")
+    print("\nClipIt Backend (FastAPI)")
     print("─" * 35)
-    print(f"✅ yt-dlp:   {'Available' if has_ytdlp else '❌ NOT FOUND'}")
-    print(f"✅ ffmpeg:   {'Available' if has_ffmpeg else '❌ NOT FOUND'}")
-    print(f"✅ Supabase: {'Connected' if supabase else '⚠️ Not configured'}")
-    print(f"📁 Temp dir: {TEMP_DIR}")
+    print(f"yt-dlp:   {'Available' if has_ytdlp else 'NOT FOUND'}")
+    print(f"ffmpeg:   {'Available' if has_ffmpeg else 'NOT FOUND'}")
+    print(f"Supabase: {'Connected' if supabase else 'Not configured'}")
+    print(f"Temp dir: {TEMP_DIR}")
     print("─" * 35 + "\n")
     
     if not has_ytdlp:
-        print("❌ yt-dlp is required! Install with: brew install yt-dlp")
+        print("yt-dlp is required! Install with: brew install yt-dlp")
     if not has_ffmpeg:
-        print("❌ ffmpeg is required! Install with: brew install ffmpeg")
+        print("ffmpeg is required! Install with: brew install ffmpeg")
     
     yield
     
