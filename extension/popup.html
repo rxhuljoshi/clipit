@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ClipIt</title>
+  <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+  <div class="container">
+    <!-- Header -->
+    <header class="header">
+      <div class="logo">
+        <span class="logo-icon">🎵</span>
+        <span class="logo-text">ClipIt</span>
+      </div>
+      <div class="quota" id="quota">
+        <span class="quota-count" id="quotaCount">5</span>
+        <span class="quota-label">/5</span>
+      </div>
+    </header>
+
+    <!-- Video Info -->
+    <section class="video-info" id="videoInfo">
+      <div class="video-loading" id="videoLoading">
+        <div class="spinner"></div>
+        <p>Detecting video...</p>
+      </div>
+      <div class="video-details hidden" id="videoDetails">
+        <div class="video-thumbnail" id="videoThumbnail"></div>
+        <div class="video-meta">
+          <h2 class="video-title" id="videoTitle">Video Title</h2>
+          <p class="video-channel" id="videoChannel">Channel • Duration</p>
+        </div>
+      </div>
+      <div class="video-error hidden" id="videoError">
+        <span class="error-icon">⚠️</span>
+        <p>No YouTube video detected</p>
+        <small>Open a YouTube video to download</small>
+      </div>
+    </section>
+
+    <!-- Format Selection -->
+    <section class="format-section hidden" id="formatSection">
+      <label class="section-label">Format</label>
+      <div class="format-toggle">
+        <button class="format-btn active" data-format="mp3" id="btnMp3">
+          <span class="format-icon">🎵</span>
+          MP3
+        </button>
+        <button class="format-btn" data-format="mp4" id="btnMp4">
+          <span class="format-icon">🎬</span>
+          MP4
+        </button>
+      </div>
+    </section>
+
+    <!-- Quality Selection -->
+    <section class="quality-section hidden" id="qualitySection">
+      <label class="section-label">Quality</label>
+      <div class="quality-dropdown">
+        <select id="qualitySelect" class="quality-select">
+          <!-- Populated by JS -->
+        </select>
+      </div>
+    </section>
+
+    <!-- Download Button -->
+    <section class="download-section hidden" id="downloadSection">
+      <button class="download-btn" id="downloadBtn">
+        <span class="btn-icon">⬇</span>
+        <span class="btn-text">Download Now</span>
+      </button>
+    </section>
+
+    <!-- Progress -->
+    <section class="progress-section hidden" id="progressSection">
+      <div class="progress-bar">
+        <div class="progress-fill" id="progressFill"></div>
+      </div>
+      <p class="progress-text" id="progressText">Preparing download...</p>
+    </section>
+
+    <!-- Rate Limit Warning -->
+    <section class="limit-warning hidden" id="limitWarning">
+      <span class="warning-icon">⏳</span>
+      <p>Daily limit reached</p>
+      <small>Resets in <span id="resetTime">24 hours</span></small>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <small>For personal use only</small>
+    </footer>
+  </div>
+
+  <script src="popup.js" type="module"></script>
+</body>
+</html>
